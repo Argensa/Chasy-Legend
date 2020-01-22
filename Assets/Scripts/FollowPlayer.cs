@@ -8,6 +8,7 @@ public class FollowPlayer : MonoBehaviour
     public GameObject gameController;
     bool doAlready;
     Vector3 offset;
+    public GameObject gunPlatform;
     // Start is called before the first frame update
     void Start()
     {

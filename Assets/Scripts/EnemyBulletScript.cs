@@ -7,7 +7,7 @@ public class EnemyBulletScript : MonoBehaviour
     Rigidbody rb;
     public float bulletSpeed = 15f;
     float countTime;
-    float liveTime = 6f;
+    float liveTime = 2f;
     public GameObject bulletExplo;
     // Start is called before the first frame update
     void Start()
@@ -49,7 +49,7 @@ public class EnemyBulletScript : MonoBehaviour
             gameObject.SetActive(false);
         } 
 
-        if (other.gameObject.CompareTag("ForceField"))
+        if (other.gameObject.layer == 20)
         {
             GameObject bulletExplosion = SCR_Pool.GetFreeObject(bulletExplo);
             bulletExplosion.GetComponent<SpawnScript>().Spawn(transform.position, transform.rotation);

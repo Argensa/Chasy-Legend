@@ -25,7 +25,7 @@ public class Enemy1AI : MonoBehaviour
     bool shouldBrake = false;
     
     //Look at player variables
-    float lookSpeed = 75f;
+    public float lookSpeed = 90f;
     float lookStep;
     Quaternion lookAtPlayer;
 

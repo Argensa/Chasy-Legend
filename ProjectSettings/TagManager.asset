@@ -31,6 +31,10 @@ TagManager:
   - MapBuilder
   - Ground
   - ForceField
+  - BigPoliceCar
+  - DistanceText
+  - Flame
+  - ShootPE
   layers:
   - Default
   - TransparentFX
@@ -52,7 +56,7 @@ TagManager:
   - Wall
   - MapBuilder
   - Tile
-  - 
+  - ForceField
   - 
   - 
   - 

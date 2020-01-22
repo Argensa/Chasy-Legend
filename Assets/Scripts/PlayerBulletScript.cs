@@ -6,7 +6,7 @@ public class PlayerBulletScript : MonoBehaviour
 {
     Rigidbody rb;
     public float bulletSpeed;
-    float liveTime = 4f;
+    float liveTime = 2f;
     float countTime = 0.0f;
 
 
@@ -14,7 +14,7 @@ public class PlayerBulletScript : MonoBehaviour
     public GameObject gameController;
 
     [Header("Bullet Properties")]
-    public bool pierce = false;
+    public bool slow = false;
     public int targetPierce = 3;
     public bool chain = false;
     public int targetChain = 0;
@@ -63,9 +63,9 @@ public class PlayerBulletScript : MonoBehaviour
         {
             fork = true;
         }
-        if (gameController.GetComponent<SceneController>().bulletPierceStatus == true)
+        if (gameController.GetComponent<SceneController>().bulletSlowStatus == true)
         {
-            pierce = true;
+            slow = true;
         }
 
     }
@@ -107,11 +107,12 @@ public class PlayerBulletScript : MonoBehaviour
             GameObject bulletExplosion = SCR_Pool.GetFreeObject(bulletExplo);
             bulletExplosion.GetComponent<SpawnScript>().Spawn(transform.position, transform.rotation);
            // bulletExplo.GetComponent<ParticleSystem>().Play();
-            if (chain == true || fork == true || pierce == true)
+            if (chain == true || fork == true || slow == true)
             {
                 Chain();
                 Fork();
-                Pierce();
+                Slow();
+                
                 if (other.gameObject.GetComponent<ChainOrNot>() != null)
                 {
                     other.gameObject.GetComponent<ChainOrNot>().chained = true;
@@ -119,7 +120,7 @@ public class PlayerBulletScript : MonoBehaviour
                
                 
             }
-            else if (chain == false && fork == false && pierce == false)
+            else if (chain == false && fork == false && slow == false)
             {
                 gameObject.SetActive(false);
                 //Destroy(gameObject);
@@ -127,16 +128,15 @@ public class PlayerBulletScript : MonoBehaviour
 
         }
     }
-    void Pierce()
+    void Slow()
     {
-        if (pierce == true && targetPierce >= 0)
+        if (slow == true )
         {
-            targetPierce -= 1;
+            int slowOrNot;
+            slowOrNot = Random.Range(0, 1);
+           
         }
-        else if (targetPierce <= 0) //check if it can pierce the target
-        {
-            pierce = false;
-        }
+       
     }
     void Chain ()
     {
@@ -165,8 +165,8 @@ public class PlayerBulletScript : MonoBehaviour
     {
         if (fork == true)
         {
-            
-            
+
+            Vector3 ForkGeneralDirection = new Vector3(0, transform.rotation.y, 0);
             for (int i = 0; i <= 1; i++ )
             {
                 GameObject forkBullet = SCR_Pool.GetFreeObject(forkBulletObj);

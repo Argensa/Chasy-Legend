@@ -6,17 +6,18 @@ public class SpawnScript : MonoBehaviour
 {
     float exploTime;
     float bulletExplosionTime;
+    GameObject mapBuilder;
     // Start is called before the first frame update
     void Start()
     {
-      
+        mapBuilder = GameObject.FindGameObjectWithTag("MapBuilder");
         
     }
     public void Spawn(Vector3 position, Quaternion rotation)
     {
         if (this.gameObject.CompareTag("GiftBox"))
         {
-            gameObject.GetComponent<GiftBox>().randomNum = Random.Range(0, 6);
+            gameObject.GetComponent<GiftBox>().randomNum = Random.Range(0, 7);
         }
         transform.position = position;
         transform.rotation = rotation;
@@ -46,6 +47,14 @@ public class SpawnScript : MonoBehaviour
             }
           
         }
+        if (this.gameObject.CompareTag("Safe Zone"))
+        {
+            if (this.gameObject.GetComponent<SafeZone>() != null)
+            {
+                //gameObject.GetComponent<SafeZone>().thisPos = new Vector3(mapBuilder.transform.position.x, -1, mapBuilder.transform.position.z);
+            }
+           
+        }
         if (this.gameObject.CompareTag("BulletExplosion"))
         {
             bulletExplosionTime += Time.deltaTime;
@@ -57,9 +66,5 @@ public class SpawnScript : MonoBehaviour
        
         
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

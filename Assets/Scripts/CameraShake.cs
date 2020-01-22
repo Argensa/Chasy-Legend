@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ibuprogames.TiltShiftAsset;
 
 public class CameraShake : MonoBehaviour
 {
+    private void Start()
+    {
+        TiltShift tiltShift = gameObject.AddComponent<TiltShift>();
+    }
     public IEnumerator Shake (float duration, float magnitude)
     {
         Vector3 originalPosition = transform.localPosition;

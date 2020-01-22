@@ -40,8 +40,8 @@ public class GiftBox : MonoBehaviour
             if (Vector3.Distance(playerHolder.transform.position, transform.position) > 1)
             {
                 Vector3 Direction = playerHolder.transform.position - transform.position;
-                //   rb.AddForce(Direction.normalized * 25);
-                rb.velocity = Direction.normalized * 25f;
+                //rb.AddForce(Direction.normalized * 25);
+                rb.velocity = Direction.normalized * 55f;
             }
           
           
@@ -83,16 +83,16 @@ public class GiftBox : MonoBehaviour
                
             } else if (randomNum == 2)
             {
-                if (gameController.GetComponent<SceneController>().bulletPierceStatus == true)
+                if (gameController.GetComponent<SceneController>().bulletSlowStatus == true)
                 {
                     anim.Play();
                     playerHolder.GetComponent<PlayerController>().attackSpeed = playerHolder.GetComponent<PlayerController>().attackSpeed / 1.5f;
                     mainText.GetComponent<Text>().text = "ATTACK SPEED ++";
-                } else if (gameController.GetComponent<SceneController>().bulletPierceStatus == false)
+                } else if (gameController.GetComponent<SceneController>().bulletSlowStatus == false)
                 {
                     anim.Play();
-                    gameController.GetComponent<SceneController>().bulletPierceStatus = true;
-                    mainText.GetComponent<Text>().text = "PIERCE";
+                    gameController.GetComponent<SceneController>().bulletSlowStatus = true;
+                    mainText.GetComponent<Text>().text = "SLOW";
                 }
                 
             } else if (randomNum == 3)
@@ -115,7 +115,7 @@ public class GiftBox : MonoBehaviour
                 }
                 
                 mainText.GetComponent<Text>().text = "BOMB";
-            } else if (randomNum == 6)
+            } else if (randomNum == 6 || randomNum == 7)
             {
                 anim.Play();
                 StartCoroutine(cameraShake.Shake(.20f, .5f));

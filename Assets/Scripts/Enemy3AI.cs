@@ -84,6 +84,14 @@ public class Enemy3AI : MonoBehaviour
                 lookAtPlayer = Quaternion.LookRotation(playerHolder.transform.position - transform.position);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAtPlayer, lookStep);
 
+                if (Vector3.Distance(transform.position, playerHolder.transform.position) <= 55)
+                {
+                    shouldBrake = true;
+                } else if (Vector3.Distance(transform.position, playerHolder.transform.position) > 55)
+                {
+                    shouldBrake = false;
+                }
+
                 if (playerDetected == false)
                 {
                     shouldBrake = true;

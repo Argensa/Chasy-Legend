@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: {fileID: 0}
   playerHolder: {fileID: 0}
+  distText_Text: {fileID: 0}
 --- !u!1001 &8568820406572922180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,7 +72,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 1e198117f9cc05e41b24633814982d2f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 1e198117f9cc05e41b24633814982d2f,
         type: 3}
@@ -127,6 +128,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5975033157549033438, guid: 1e198117f9cc05e41b24633814982d2f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.69
+      objectReference: {fileID: 0}
+    - target: {fileID: -2416733968201007103, guid: 1e198117f9cc05e41b24633814982d2f,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e198117f9cc05e41b24633814982d2f, type: 3}

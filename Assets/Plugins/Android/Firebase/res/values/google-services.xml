@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="firebase_database_url" translatable="false">https://chasy-legend.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">283266803189</string>
+  <string name="google_storage_bucket" translatable="false">chasy-legend.appspot.com</string>
+  <string name="project_id" translatable="false">chasy-legend</string>
+  <string name="google_api_key" translatable="false">AIzaSyByY-eW7oJO7xKCkgc2LIgL9sWuqetNy78</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyByY-eW7oJO7xKCkgc2LIgL9sWuqetNy78</string>
+  <string name="google_app_id" translatable="false">1:283266803189:android:078a9a66c47d46a5a8ecbc</string>
+  <string name="default_web_client_id" translatable="false">283266803189-b7u4qhg6bmpmu28us5e9rh82r4bbq37r.apps.googleusercontent.com</string>
+</resources>

@@ -7,7 +7,7 @@ public class TankTurret : MonoBehaviour
     public GameObject tank;
     public GameObject playerHolder;
     float attackCount;
-    float attackSpeed = 0.5f;
+    public float attackSpeed = 0.3f;
     public GameObject enemyBulletObj;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class TankTurret : MonoBehaviour
             transform.position = new Vector3(tank.transform.position.x, tank.transform.position.y + 0.8f, tank.transform.position.z);
             transform.LookAt(new Vector3(playerHolder.transform.position.x, transform.position.y, playerHolder.transform.position.z));
             attackCount = attackCount + Time.deltaTime;
-            if (Vector3.Distance(playerHolder.transform.position, transform.position) < 25)
+            if (Vector3.Distance(playerHolder.transform.position, transform.position) < 85)
             {
                 if (attackCount > attackSpeed)
                 {

@@ -8,7 +8,8 @@ public class ForceField : MonoBehaviour
     Vector3 orgScale;
     public float speed;
     float timeCount;
-    float liveTime;
+    public float liveTime;
+    public float deathTime;
     public bool active = false;
     public GameObject playerHolder;
     MeshRenderer mesh;
@@ -30,7 +31,7 @@ public class ForceField : MonoBehaviour
             Vector3 updatePos = new Vector3(playerHolder.transform.position.x, playerHolder.transform.position.y, playerHolder.transform.position.z);
             transform.position = updatePos;
             liveTime += Time.deltaTime;
-                if (liveTime >= 1200)
+                if (liveTime >= deathTime)
                 {
                       active = false;
                 }

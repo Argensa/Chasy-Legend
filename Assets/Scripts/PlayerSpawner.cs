@@ -39,11 +39,7 @@ public class PlayerSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-        
-    }
+  
     void Reposition()
     {
         position = new Vector3(Random.Range(0 - radius, 0 + radius),-0.8f, Random.Range(0 - radius, 0 + radius));

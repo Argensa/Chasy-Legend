@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7379913558362172333}
   - component: {fileID: 7379913558362202013}
   - component: {fileID: 1236747810011992295}
+  - component: {fileID: 401835129683767335}
   m_Layer: 0
   m_Name: BulletExplo
   m_TagString: BulletExplosion
@@ -41,7 +42,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7379913558347847689}
   serializedVersion: 6
-  lengthInSec: 0.1
+  lengthInSec: 0.15
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -267,7 +268,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -583,7 +584,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 50
+    maxNumParticles: 25
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4759,5 +4760,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e20f1e3b76a1aab418ae97320f969752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &401835129683767335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379913558347847689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f3d9ee7e5196e42bcac037a442ce90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 public class SafeZone : MonoBehaviour
 {
     public GameObject gameController;
     bool goAgain;
-    Vector3 thisPos;
+    public Vector3 thisPos;
     Vector3 direction;
     public GameObject playerHolder;
     public GameObject countText;
     float count = 5;
+
+    public Vignette vignette;
+    public GameObject mainCam;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,19 +25,30 @@ public class SafeZone : MonoBehaviour
         {
             thisPos = new Vector3(transform.position.x, playerHolder.transform.position.y, transform.position.z);
         }
-        
+
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera");
+        mainCam.GetComponent<PostProcessVolume>().profile.TryGetSettings<Vignette>(out vignette);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gameController.GetComponent<SceneController>().gameState == 1)
+        {
+            playerHolder = GameObject.FindGameObjectWithTag("PlayerHolder");
+            thisPos = transform.position;
+        }
         if (goAgain == false)
         {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.Space))
             {
                 goAgain = true;
      
+            }
+            if (Input.touchCount >= 1)
+            {
+                goAgain = true;
             }
         }
         if (count <= 0)
@@ -47,6 +62,7 @@ public class SafeZone : MonoBehaviour
         {
             gameObject.transform.parent.gameObject.SetActive(false);
         }
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -55,9 +71,9 @@ public class SafeZone : MonoBehaviour
             goAgain = false;
             other.gameObject.transform.LookAt(thisPos);
             direction = thisPos - playerHolder.transform.position;
-           
             
         }
+
     }
     private void OnTriggerStay(Collider other)
     {
@@ -70,14 +86,19 @@ public class SafeZone : MonoBehaviour
                     {
                         
                         other.gameObject.GetComponent<Rigidbody>().velocity = direction * 1;
-                     } else
+                    } else
                     {
                       other.gameObject.GetComponent<Rigidbody>().velocity = direction * 0 ;
                     }
                 count = count - Time.deltaTime;
                 countText.GetComponent<Text>().text = count.ToString("00");
                 }
-            
+
+            vignette.color.value = Color.cyan;
+        }
+        if (other.gameObject.layer == 11)
+        {
+            other.gameObject.SetActive(false);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -87,6 +108,9 @@ public class SafeZone : MonoBehaviour
             gameController.GetComponent<SceneController>().playerAggro = 1;
             count = 5;
             countText.GetComponent<Text>().text = "";
+            vignette.color.value = Color.black;
+            gameObject.SetActive(false);
         }
     }
+   
 }

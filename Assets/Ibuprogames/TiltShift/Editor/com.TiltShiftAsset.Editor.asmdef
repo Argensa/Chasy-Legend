@@ -1,0 +1,12 @@
+﻿{
+  "name": "Ibuprogames.TiltShiftAsset.Editor",
+  "references": [ "Ibuprogames.TiltShiftAsset" ],
+  "optionalUnityReferences": [],
+  "includePlatforms": [ "Editor" ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": []
+}

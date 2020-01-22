@@ -12,6 +12,9 @@ public class EnemyTargetScript : MonoBehaviour
     public bool killAlready;
     public CameraShake cameraShake;
     bool isGrounded;
+    int randomExploSound;
+
+    bool doAlready = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,16 +29,24 @@ public class EnemyTargetScript : MonoBehaviour
     {
         if (playerHolder != null)
         {
-            if (Vector3.Distance(playerHolder.transform.position, transform.position) >= 60f && isGrounded == true)
+            if (Vector3.Distance(playerHolder.transform.position, transform.position) >= 90f && isGrounded == true)
             {
 
                 Physics.IgnoreLayerCollision(10, 16, true);
+                health = 100f;
             }
-            else if (Vector3.Distance(playerHolder.transform.position, transform.position) < 60f)
+            else if (Vector3.Distance(playerHolder.transform.position, transform.position) < 90f)
             {
+                if (doAlready == false)
+                {
+                    health = 100f;
+                    doAlready = true;
+                } 
                 Physics.IgnoreLayerCollision(10, 16, false);
                 if (health <= 0 && killAlready == false && playerHolder != null)
                 {
+                    randomExploSound = Random.Range(1, 5);
+                    FindObjectOfType<AudioManager>().Play("Explosion " + randomExploSound.ToString());
                     // StartCoroutine(cameraShake.Shake(.15f, .4f));
                     playerHolder.GetComponent<PlayerController>().currentTarget = null;
                     GameObject explosionObj = SCR_Pool.GetFreeObject(explosion);
@@ -68,12 +79,16 @@ public class EnemyTargetScript : MonoBehaviour
         if (other.gameObject.CompareTag("PlayerBullet"))
         {
             health = health - playerHolder.GetComponent<PlayerController>().attackDamage;
-            //other.gameObject.SetActive(false);
-            StartCoroutine(cameraShake.Shake(.1f, .1f));
+            
+            
         }
         if (other.gameObject.layer == 16)
         {
-            health = 0f;
+            if (this.gameObject.CompareTag("BigPoliceCar") != true)
+            {
+                health = 0f;
+            }
+            
             other.gameObject.SetActive(false);
         }
     }
@@ -81,11 +96,17 @@ public class EnemyTargetScript : MonoBehaviour
     {
         if (collision.gameObject.layer == 10 )
         {
-            health = 0f;
+            if (this.gameObject.CompareTag("BigPoliceCar") != true)
+            {
+                health = 0f;
+            }
         }
         if (collision.gameObject.layer == 16 )
         {
-            health = 0f;
+            if (this.gameObject.CompareTag("BigPoliceCar") != true)
+            {
+                health = 0f;
+            }
             collision.gameObject.SetActive(false);
         }
     }

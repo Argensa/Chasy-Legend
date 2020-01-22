@@ -1,0 +1,10 @@
+1.1
+--------------------------
+- Two modes, proportional (default) and fixed.
+  Thanks to Maayanf.
+- Cubic distortion effect.
+- Minor fixes.
+
+1.0
+--------------------------
+- Initial release.

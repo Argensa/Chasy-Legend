@@ -4,42 +4,60 @@ using UnityEngine;
 
 public class Tiles : MonoBehaviour
 {
+    
     public GameObject mapBuilder;
     public GameObject playerHolder;
+
+    public GameObject gameController;
+    int gameState;
     Transform tile;
+    bool doAlready = false;
     // Start is called before the first frame update
     void Start()
     {
         mapBuilder = GameObject.FindGameObjectWithTag("MapBuilder");
+        gameController = GameObject.FindGameObjectWithTag("GameController");
+        
         playerHolder = GameObject.FindGameObjectWithTag("PlayerHolder");
+
     }
 
     // Update is called once per frame
-    void Update()
+   void Update()
     {
-        if (playerHolder != null)
-        {
-            if (Vector3.Distance(transform.position, playerHolder.transform.position) >= 200f)
+            if (gameState == 0)
             {
-                Destroy(gameObject);
-                //gameObject.SetActive(false);
+                gameState = gameController.GetComponent<SceneController>().gameState;
             }
-            else
+            if (gameState == 1)
             {
-                //gameObject.SetActive(true);
+                if (doAlready == false)
+                {
+                    playerHolder = GameObject.FindGameObjectWithTag("PlayerHolder");
+                    doAlready = true;
+                }
+               
+                if (playerHolder != null)
+                {
+                    if (Vector3.Distance(transform.position, playerHolder.transform.position) >= 250f)
+                    {
+                        gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        gameObject.SetActive(true);
+                    }
+                }
+        
             }
-        }
-       
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerHolder"))
         {
-            if (mapBuilder != null && mapBuilder.GetComponent<MapBuilder>() != null)
-            {
-                mapBuilder.GetComponent<MapBuilder>().onTile = transform;
-            }
-          
+            mapBuilder.GetComponent<MapBuilder>().onTile = transform;  
         }
     }
+  
 }

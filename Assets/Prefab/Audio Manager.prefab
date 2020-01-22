@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4191516789659365097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4191516789659365099}
+  - component: {fileID: 4191516789659365098}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4191516789659365099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191516789659365097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.617826, y: 3.1945994, z: 20.044428}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4191516789659365098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191516789659365097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c92a3f1daaaf904897ebdce5a70e7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: 
+    clip: {fileID: 0}
+    loop: 0
+    volume: 0.033
+    pitch: 1
+    source: {fileID: 0}
+  - name: Blip
+    clip: {fileID: 8300000, guid: cf8e3787dea5adc478ddaf30fb144f53, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion 1
+    clip: {fileID: 8300000, guid: 16a9b62044e8bee4fbc4bbbc4caa7ace, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion 2
+    clip: {fileID: 8300000, guid: cc7eaa4bb19484142baba81c0745c574, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion 3
+    clip: {fileID: 8300000, guid: 7c21bb4c639d82243b481239b16386d6, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion 4
+    clip: {fileID: 8300000, guid: b32b2ae4c474f264a867469422e202e7, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion 5
+    clip: {fileID: 8300000, guid: 5a43009056101e049a63985c829d3772, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Giftbox
+    clip: {fileID: 8300000, guid: 211e478e2dc153c4d9408427d49bdc09, type: 3}
+    loop: 0
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: 9dee020cb96065c4ebe1002024c32697, type: 3}
+    loop: 0
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - name: Police Siren
+    clip: {fileID: 8300000, guid: 6513267a733d0e14799e107d52fba3ee, type: 3}
+    loop: 1
+    volume: 0.05
+    pitch: 1.05
+    source: {fileID: 0}
+  - name: Theme 2
+    clip: {fileID: 8300000, guid: f9145749cfd033346ac966d770f6a11d, type: 3}
+    loop: 1
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: edcea0233a9e23342afde4f27690200d, type: 3}
+    loop: 1
+    volume: 0.033
+    pitch: 1
+    source: {fileID: 0}
+  volume:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0

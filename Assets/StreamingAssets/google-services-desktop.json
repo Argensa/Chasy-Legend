@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "283266803189",
+    "firebase_url": "https://chasy-legend.firebaseio.com",
+    "project_id": "chasy-legend",
+    "storage_bucket": "chasy-legend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283266803189:android:078a9a66c47d46a5a8ecbc",
+        "android_client_info": {
+          "package_name": "com.argenGD.chasyLegend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283266803189-b7u4qhg6bmpmu28us5e9rh82r4bbq37r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByY-eW7oJO7xKCkgc2LIgL9sWuqetNy78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283266803189-b7u4qhg6bmpmu28us5e9rh82r4bbq37r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

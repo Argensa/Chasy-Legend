@@ -22,6 +22,7 @@ public class ForkBulletScript : MonoBehaviour
     {
         transform.position = position;
         transform.rotation = rotation;
+        transform.localEulerAngles = new Vector3(0, rotation.y, rotation.z);
         leftDir = 2 * transform.forward + -transform.right;
         rightDir = 2 * transform.forward + transform.right;
     }

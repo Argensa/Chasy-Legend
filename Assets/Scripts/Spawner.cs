@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
     [Header("FindRoot")]
     public GameObject allEnemy;
 
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -64,8 +64,8 @@ public class Spawner : MonoBehaviour
             if (isGrounded == true && ableSpawn == true)
             {
                 SpawnPoliceCar(4 - (gameStage * 10 / 20));
-                SpawnAPC(6 - (gameStage * 10 / 20));
-                SpawnTank(10 - (gameStage * 10 / 20));
+                SpawnAPC(10 - (gameStage * 10 / 20));
+                SpawnTank(6 - (gameStage * 10 / 20));
                 // This does not yield the correct number of enemies each time it is run. 
                 // Make it so that it stops when the designated number of enemies is reached
 
@@ -74,13 +74,16 @@ public class Spawner : MonoBehaviour
             {
                 Reposition();
             }
+
+
+           
         }
        
     }
     void Reposition()
     {
         position = new Vector3(Random.Range(playerHolder.transform.position.x - radius, playerHolder.transform.position.x + radius),
-                                      playerHolder.transform.position.y + 0.2f,
+                                      playerHolder.transform.position.y + 0.5f,
                                       Random.Range(playerHolder.transform.position.z - radius, playerHolder.transform.position.z + radius));
     }
     void GroundCheck() //check to see if this thing is above the ground or not

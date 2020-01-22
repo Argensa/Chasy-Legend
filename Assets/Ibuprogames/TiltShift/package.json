@@ -1,0 +1,15 @@
+{
+  "name": "com.ibuprogames.TiltShift",
+  "version": "2.0.0",
+  "displayName": "Tilt Shift",
+  "decription": "'Tilt Shift' makes the scene seem much smaller than it actually is, simulating the shallow depth of field normally encountered in close-up photography.",
+  "unity": "2017.1",
+  "dependencies":  {  },
+  "keywords": ["tilt", "shift", "tilt shift", "tilt-shift", "diorama" ],
+  "author":
+  {
+    "name": "Martin Bustos",
+    "email": "hello@ibuprogames.com",
+    "url": "http://ibuprogames.com"
+  }
+}

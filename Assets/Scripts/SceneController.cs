@@ -9,7 +9,7 @@ public class SceneController : MonoBehaviour
 
     public int bulletChainLevel;
     public bool bulletChainStatus;
-    public bool bulletPierceStatus;
+    public bool bulletSlowStatus;
     public bool bulletForkStatus;
 
     public int playerAggro = 1;
@@ -23,14 +23,19 @@ public class SceneController : MonoBehaviour
     public Text endText;
     public Text endNumber;
     public Text homeText;
+    public Button muteButton;
     Button home;
-
+   
 
 
     public int gameStage;
     public float spawnCount;
     public int money = 0;
+    public int mute;
+
+    int saveKill;
     int highScore;
+    float surviveTime;
 
     public bool pause = false;
     public int killCount = 0;
@@ -41,20 +46,56 @@ public class SceneController : MonoBehaviour
 
     public int carID;
     public GameObject[] cars;
+    public bool[] carsUnlockedOrNot;
+    int unlockedOrNot;
+
     public GameObject currentCar;
     public GameObject chosenCar;
+
+    int preferredCar;
+    bool doAlready = false;
+
+    public string[] carDescription;
+    public Text carDes_text;
+
+    
     private void Awake()
     {
        
         SCR_Pool.Flush();
+        unlockedOrNot = PlayerPrefs.GetInt("Unlocked");
+        if (unlockedOrNot == 0)
+        {
+            for (int i = 1; i <= cars.Length - 1; i++)
+            {
+                carsUnlockedOrNot[i] = false;
+            }
+        } else if (unlockedOrNot == 1)
+        {
+            for (int i = 0; i<= cars.Length - 1; i++)
+            {
+                carsUnlockedOrNot[i] = true;
+            }
+        }
+        preferredCar = PlayerPrefs.GetInt("PreferredCar");
+
+
+
+        chosenCar = SCR_Pool.GetFreeObject(cars[preferredCar]);
+        currentCar = chosenCar;
+        chosenCar.GetComponent<SpawnScript>().Spawn(transform.position, transform.rotation);
     }
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
-        home = homeText.GetComponent<Button>();
-        home.enabled = false;
+
         highScore = PlayerPrefs.GetInt("HighScore", 0);
+        saveKill = PlayerPrefs.GetInt("KillCount", 0);
+        mute = PlayerPrefs.GetInt("MuteOrNot", 0);
+        surviveTime = PlayerPrefs.GetInt("SurviveTime", 0);
+        
+
     }
 
     // Update is called once per frame
@@ -63,6 +104,11 @@ public class SceneController : MonoBehaviour
         if (gameState == 0)
         {
             ChangeCar();
+        } else if (gameState == 1 && doAlready == false)
+        {
+            FindObjectOfType<AudioManager>().Play("Theme 2");
+            FindObjectOfType<AudioManager>().Play("Police Siren");
+            doAlready = true;
         }
         PauseButton();
         TimeCountDown();
@@ -72,22 +118,31 @@ public class SceneController : MonoBehaviour
         if (pause == true)
         {
             pauseText.text = " PAUSED ";
-            homeText.text = " HOME ";
-            home.enabled = true;
+            
+           // muteButton.gameObject.SetActive(true);
             Time.timeScale = 0f;
         } else if (pause == false)
         {
             pauseText.text = " ";
-            homeText.text = " ";
-            home.enabled = false;
+            
+           // muteButton.gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
-        if (money > PlayerPrefs.GetInt("HighScore",0))
-        {
-            PlayerPrefs.SetInt("HighScore", money);
-            moneyCount.color = new Color(255, 15, 15);
-        }
 
+
+        if (money >= PlayerPrefs.GetInt("HighScore",0))
+        {
+            moneyCount.color = new Color(255, 15, 15);
+            PlayerPrefs.SetInt("HighScore", money);
+           
+        }
+        if (killCount >= PlayerPrefs.GetInt("KillCount",0))
+        {
+            carCount.color = new Color(255, 15, 15);
+            PlayerPrefs.SetInt("KillCount", killCount);
+           
+        }
+      
         if (gameOver == true)
         {
             overTime += Time.deltaTime;
@@ -103,7 +158,10 @@ public class SceneController : MonoBehaviour
             }
            
         }
+
+        
     }
+
     void TimeCountDown ()
     {
         inGameTime += Time.deltaTime;
@@ -111,6 +169,10 @@ public class SceneController : MonoBehaviour
         string seconds = (inGameTime % 60).ToString("00");
        
         countdownTimer.text = string.Format("{0}:{1}", minutes, seconds);
+        if (inGameTime > PlayerPrefs.GetInt("SurviveTime"))
+        {
+            surviveTime = inGameTime;
+        }
     }
     void GameProgression()
     {
@@ -128,11 +190,11 @@ public class SceneController : MonoBehaviour
         {
             pause = true;
         }
-        if ( pauseButton.GetComponent<Pause>().pausing == true)
+        if (Pause.pausing == true)
         {
             pause = true;
         }
-        if (pauseButton.GetComponent<Pause>().pausing == false)
+        if (Pause.pausing == false)
         {
             pause = false;
         }
@@ -145,9 +207,32 @@ public class SceneController : MonoBehaviour
             {
                 chosenCar = SCR_Pool.GetFreeObject(cars[carID]);
                 currentCar = chosenCar;
+
                 chosenCar.GetComponent<SpawnScript>().Spawn(transform.position, transform.rotation);
+                
+                if (carsUnlockedOrNot[carID] == false)
+                {
+                    carDes_text.text = "Locked";
+                    GameObject.Find("Change GameState").GetComponent<Image>().color = Color.gray;
+                    GameObject.Find("Change GameState").GetComponent<Button>().interactable = false;
+                }
+                else if (carsUnlockedOrNot[carID] == true)
+                {
+                    carDes_text.text = "";
+                    GameObject.Find("Change GameState").GetComponent<Image>().color = Color.white;
+                    GameObject.Find("Change GameState").GetComponent<Button>().interactable = true;
+                }
             }
            
         }
+      
+    }
+
+
+    //Unlock car system
+
+    void UnlockCar()
+    {
+
     }
 }
